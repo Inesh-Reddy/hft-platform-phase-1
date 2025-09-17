@@ -7,7 +7,7 @@ import { AppDataSource } from '@repo/dbschema';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       ...AppDataSource.options,
       autoLoadEntities: true,
