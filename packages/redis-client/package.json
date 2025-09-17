@@ -9,6 +9,7 @@
     "build": "tsc -b"
   },
   "dependencies": {
-    "@types/node": "^24.5.1"
+    "@types/node": "^24.5.1",
+    "redis": "^5.8.2"
   }
 }
