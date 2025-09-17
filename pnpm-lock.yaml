@@ -186,7 +186,11 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
-  packages/dbschema: {}
+  packages/dbschema:
+    dependencies:
+      '@types/node':
+        specifier: ^24.5.1
+        version: 24.5.1
 
   packages/eslint-config:
     devDependencies:
@@ -224,7 +228,11 @@ importers:
         specifier: ^8.40.0
         version: 8.40.0(eslint@9.34.0)(typescript@5.9.2)
 
-  packages/redis-client: {}
+  packages/redis-client:
+    dependencies:
+      '@types/node':
+        specifier: ^24.5.1
+        version: 24.5.1
 
   packages/types:
     dependencies:
