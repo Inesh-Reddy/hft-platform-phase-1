@@ -4,6 +4,7 @@ import {
   OnGatewayInit,
 } from '@nestjs/websockets';
 import { RedisService } from 'src/redis/redis.service';
+import { mapRedisTicker, TickerUpdate } from '../../../../packages/types/dist';
 
 @WebSocketGateway({ path: '/ws' })
 export class WsGateway implements OnGatewayConnection, OnGatewayInit {
@@ -16,8 +17,10 @@ export class WsGateway implements OnGatewayConnection, OnGatewayInit {
     client.send(`Hello Binance`);
     await this.redisService.subscribe(
       'market.ticker.BTCUSDT.binance',
-      (msg) => {
-        client.send(msg);
+      (msg: string) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+        const newData: TickerUpdate = mapRedisTicker(msg);
+        client.send(JSON.stringify(newData));
       },
     );
   };
